@@ -1,0 +1,73 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode TempNode=new ListNode(0);
+        ListNode CurrentNode=TempNode;
+        while(l1!=null && l2!=null)
+        {
+            if(l1.val<l2.val)
+            {
+                CurrentNode.next=l1;// Current is pointing towards l1
+                l1=l1.next;//l1 is traversing to the next node
+            }
+            else
+            {
+                CurrentNode.next=l2;
+                l2=l2.next;
+            }
+                CurrentNode=CurrentNode.next;//Current is traversing through
+            
+        }
+        
+        /* Incase, one of the lists gets over, and the other one remains, the above AND condition would become false and codes below taht would not be executed. Hence the following code */
+       
+       if(l1!=null)
+        {
+          CurrentNode.next=l1;
+                l1=l1.next;  
+        }
+        if(l2!=null)
+        {
+         CurrentNode.next=l2;
+                l2=l2.next;   
+        }
+        return TempNode.next;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
