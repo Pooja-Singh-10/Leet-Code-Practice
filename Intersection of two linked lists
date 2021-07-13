@@ -1,0 +1,38 @@
+/* To solve this problem, we will take first linkedlist in hashset and then check whether any element of second linked list is contained in the hashset. 
+If no element of second linked list is present in hashset, then we'll return null else we will return that perticular element */
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+
+
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+      Set<ListNode> hash = new HashSet<>();
+        while(headA!=null)
+        {
+            hash.add(headA);
+            headA=headA.next;
+        }
+        
+        while(headB!=null)
+        {
+            if(hash.contains(headB))
+            {
+                return headB;    
+            }
+            headB=headB.next;
+            
+        }
+        return null;
+    }
+}
