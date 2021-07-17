@@ -1,0 +1,18 @@
+
+class Solution {
+    public int specialArray(int[] nums) {
+        for(int i=0;i<=1000;i++) // Considering all the integers between 0 and 1000
+        {
+            int count =0;
+            for(int num: nums)
+            {
+                if(num>=i) // Comparing i with all the elements of the array
+                    count++;
+            }
+            if(count==i) // Checking whether the count of number of elements of the array (greater than or equal to i) is same as the value of i
+                return i;  
+        }
+        return -1;
+        
+    }
+}
