@@ -18,6 +18,9 @@ class Solution {
             else left=mid+1;
             
         }
+        /* Special case: eg [2,3] and k=1 (ie. find first missing element).In this case right would come to -1 during binary search operations. 
+        So, in that case the answer would be k (ie. 1)*/
+        
         if(right==-1) return k;
         return arr[right]+(k-Compute(arr[right],right+1));
         
