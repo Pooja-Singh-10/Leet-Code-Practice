@@ -1,0 +1,26 @@
+/*
+Here we are using binary search cause binary search narrows down our range and even if we don't happen to find the element, we will find the elements between which it could be present and then we return the right element(since we have to pick something larger than the character) 
+*/
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target) {
+        int n=letters.length;
+          /* If target is beyoud the boundaries(ie. greater than last or lessthan first character), then we have to return the first character */
+        
+        if(letters[n-1]<=target || target<letters[0])
+            return letters[0];
+        int left=0, right=n-1;
+        while(left<right)
+        {
+            int mid=left+(right-left)/2;
+            //if(letters[mid]==target) return letters[mid+1];
+            if(letters[mid]<=target)
+                left=mid+1;
+            else
+                right=mid; /* we won't do mid-1 here since we are not returning the exact element, we are returning the element to the right of it. */
+                
+        }
+        return letters[right];
+      
+        
+    }
+}
