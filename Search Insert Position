@@ -13,7 +13,7 @@ class Solution {
                  return  i;
                
         }
-                    return n;    
+                    return n;  // if target is greater than all the elements of array, then it would be placed in the end (ie. n)  
     
     }
   
