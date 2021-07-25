@@ -30,6 +30,11 @@ class Solution {
         {
             TreeNode current=stack.pop();
             values.add(current.val);
+            
+        /* Here we will put right node first and then left node cause if a node had both left and right children the both of the 
+        below statements would be executed (which means stack would be loaded twice, so , since we want the left value to be 
+        popped out first(and placed in arraylist values), we will load the right child first into the stack and then left child*/
+         
             if(current.right!=null)
             {
                 stack.push(current.right);
