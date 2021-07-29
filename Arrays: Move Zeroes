@@ -1,3 +1,5 @@
+/* MOVING ALL THE ZEROES OF AN ARRAY TOWARDS RIGHT WITHOUT ALTERING THE ORDER OF THE NON ZERO ELEMENTS OF THE ARRAY*/
+
 /* Here we will take two pointers initially pointing towards the starting of the array (i, lastNonZeroValue).
 Then we will traverse through the array and check for any non zero value, whenever we find one, we will assign that value to 
 lastNonZeroValue and increment lastNonZeroValue. Finally we will fill all the remaining array with zeroes*/
@@ -26,4 +28,28 @@ class Solution {
     }
     
    
+}
+
+/* Similarly we can move all the zeroes towards left*/
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+        
+        int n = nums.length;
+        int firstNonZeroValue = n-1;
+        for(int i=n-1;i>0;i--)
+        {
+            if(nums[i]!=0)
+            {
+                 nums[firstNonZeroValue--]=nums[i];
+                
+            }
+               
+        }
+        
+        for(int k=firstNonZeroValue;k>0;k--)
+        {
+            nums[k]=0;
+        }
+    }
 }
