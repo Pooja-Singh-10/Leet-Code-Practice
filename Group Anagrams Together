@@ -1,30 +1,28 @@
 class Solution {
-    public List<List<String>> Anagrams(String[] string_list) {
-        HashMap<String,List<String>> map = new HashMap<>();
+    public List<List<String>> groupAnagrams(String[] strs) {
+        
         List<List<String>> result = new ArrayList<>();
-        
-        for(String strs: string_list)
+        HashMap<String, List<String>> maps = new HashMap<>();
+        /* Looping through the strings, taking char array to store each string and sorting it and keeping each sorting string in one key*/
+        for(String str:strs)
         {
-            char[] CharArr = strs.toCharArray();
+            char[] CharArr= str.toCharArray();
             Arrays.sort(CharArr);
-            String key=new String(CharArr);
-            
-            if(map.containsKey(key))
-            {
-                map.get(key).add(strs);// adding that string as a value in maps
-            }
-            else
-            {
-                List<String> strlist = new ArrayList<String>();
-                strlist.add(strs);
-                map.put(key, strlist);// where key is sorted and value in strlist is the original value
-            } 
-        }
+            String key = new String(CharArr);
         
-        result.addAll(map.values());
-          return result;
-            
+        /* Checking if the key contains sorted string or not. If yes, we are storing the correcponding orriginal string as it's value else we are creating a new arraylist of strings*/
+         if(maps.containsKey(key))
+         {
+             maps.get(key).add(str);
+         }
+        else
+        {
+            List<String> strlist=new ArrayList<String>();
+            strlist.add(str);// adding the value to list first
+            maps.put(key, strlist);// and then adding it to the map(along with the key)
         }
-      
+        }
+        result.addAll(maps.values());/*cause we have to just show the values and not keys. Hence addong values to the arraylist*/
+        return result;
     }
-
+}
