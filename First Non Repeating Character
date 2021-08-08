@@ -1,0 +1,33 @@
+/* Problem: Given a string, return the index of first non repeating character 
+Approach: Here, we will use HashMap. We will traverse through the string and start storing it's characters 
+as keys in HashMap with corresponding value as 1. If any characer is repeated, we will not store the characted twice, 
+instead we will increment it's value by 1(So, basically, we will store the letters and their frequency in the hashmap).
+Then we will iterate again through the string and return the index of the first value whose frequency is 1.
+
+class Solution {
+    public int firstUniqChar(String s) {
+        
+        HashMap<Character,Integer> res = new HashMap<Character, Integer>();
+        
+        for(int i=0;i<s.length();i++)
+        {
+            char c=s.charAt(i);
+                if(res.containsKey(c))
+                {
+                    res.put(c,res.get(c)+1);
+                }
+            else
+            {
+                res.put(c,1);
+            }
+        }
+        
+        for(int i=0;i<s.length();i++)
+        {
+            char c=s.charAt(i);
+            if(res.get(c)==1)
+                return i;
+        }
+        return -1;
+    }
+}
