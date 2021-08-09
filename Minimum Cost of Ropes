@@ -1,0 +1,35 @@
+class Solution
+{
+    //Function to return the minimum cost of connecting the ropes.
+    
+    long minCost(long arr[], int n) 
+    {
+        long res=0;
+     PriorityQueue<Long> pq=new PriorityQueue<Long>();
+      if(n==0)
+      {
+          return 0;
+      }
+      
+      // Adding all the elements in the priority queue
+      
+      for(int i=0;i<n;i++)
+      {
+          pq.add(arr[i]);
+      }
+      
+      /* Since the elements are arranged in ascending order in priority queue, 
+      the we just have to poll two elements and add them. We then store the 
+      result back to queue and repeat the same process*/
+      while(pq.size()>1)
+      {
+          long x= pq.poll();
+          long y=pq.poll();
+          res+=(x+y);
+          pq.add(x+y);
+          
+      }
+      
+      return res;
+    }
+}
