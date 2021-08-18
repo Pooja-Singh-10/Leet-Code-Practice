@@ -1,0 +1,48 @@
+class Solution {
+    public List<String> wordSubsets(String[] words1, String[] words2) {
+        List<String> result = new ArrayList();
+        int[] maxB = new int[26];
+        for(String b:words2)
+        {
+            int[] f= new int[26];
+            for(char c:b.toCharArray())
+            {
+                f[c-'a']++;
+            }
+            for(int i=0;i<26;i++)
+            {
+            maxB[i]=Math.max(f[i],maxB[i]);
+            }
+        }
+        
+        for(String a:words1)
+        {
+            int f[] = new int[26];
+            for(char c:a.toCharArray())
+            {
+                f[c-'a']++;
+            }
+            
+            if(isUniversal(f,maxB))
+            {
+                result.add(a);
+            }
+        }
+        
+        return result;
+    }
+    
+    public boolean isUniversal(int[] f, int[] maxB)
+    {
+        for(int i=0;i<f.length;i++)
+        {
+            if(f[i]<maxB[i])
+            {
+                return false;
+            }
+               
+        }
+        
+        return true;
+    }
+}
