@@ -1,0 +1,61 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    
+    
+    
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        /*If root of the main tree itself is null, then obviously it should return false */
+        if(root==null)
+        {
+            return false;
+        }
+        
+        /* If root ofthe subtree is null, it should return be a subset obviously */
+        if(subRoot==null)
+        {
+            return true;
+        }
+         /* Checking if the roots are identical */
+        if(isIdentical(root,subRoot))
+        {
+            return true;
+        }
+        /*If current roots of both the trees don't match, then try left and right trees one by one*/
+        return isSubtree(root.left,subRoot) || isSubtree(root.right,subRoot);
+            
+    }
+    
+    
+     public boolean isIdentical(TreeNode root1, TreeNode root2)
+    {
+        if(root1==null && root2==null)
+        {
+            return true;
+        }
+        
+        if(root1==null || root2==null)
+        {
+            return false;
+        }
+        /* checking ifthe values of nodes of both the trees under consideration is same or not. if yes, then checking for their left and right node values as well.*/
+        return (root1.val==root2.val)&&
+            isIdentical(root1.left, root2.left)&&
+            isIdentical(root1.right, root2.right);
+    }
+    
+   
+}
