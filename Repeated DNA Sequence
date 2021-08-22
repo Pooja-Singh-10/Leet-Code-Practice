@@ -1,0 +1,28 @@
+/*In this question, we will use a hashmap, in which key would be string of 10 characters and value would be frequency of that string in the given string s. We will iterate over given string s and take the sustrings (10 characters each) out from them and put them as Keys in the hashmap.
+
+Next we will loop over the map and find out those keys(substrings) whose frequency is more than 1*/
+
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        
+        Map<String,Integer> maps=new HashMap<>();
+        
+        for(int i=0;i<s.length()-9;i++)
+        {
+            String dna=s.substring(i,i+10);
+            maps.put(dna,maps.getOrDefault(dna,0)+1);
+        }
+        
+        List<String> result = new ArrayList<>();
+        
+        for(Map.Entry<String,Integer> e: maps.entrySet())
+        {
+            if(e.getValue()>1)
+            {
+                result.add(e.getKey());
+            }
+        }
+        
+        return result;
+    }
+}
