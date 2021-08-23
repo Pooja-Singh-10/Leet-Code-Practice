@@ -1,0 +1,18 @@
+/* Here we will cut the string in groups of k and store the values in a set( we are using set to eliminate repetition of values). 
+Hence, set will contain all set of binary representation of k. After that we will check whether size of the set is same as 2 
+raised to k, if yes, then we will return true. */
+
+class Solution {
+    public boolean hasAllCodes(String s, int k) {
+        
+        Set<String> result = new HashSet();
+        for(int i=0;i<=s.length()-k;i++)
+        {
+            result.add(s.substring(i,i+k));
+            
+        }
+        System.out.println(result);
+        
+        return (result.size()==Math.pow(2,k));
+    }
+}
