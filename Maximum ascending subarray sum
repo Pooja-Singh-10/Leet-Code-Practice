@@ -1,0 +1,24 @@
+/* Modified Kadane's Algorithm. Here we will check if nums[i-1]<nums[i], 
+if not, then we will initialize curr_sum with nums[i](neglect the array elements before i and start with the next array element).*/
+
+class Solution {
+    public int maxAscendingSum(int[] nums) {
+        
+        int curr_sum=nums[0];
+        int max_sum=curr_sum;
+        
+        for(int i=1;i<nums.length;i++)
+        {   if(nums[i-1]<nums[i])
+        {
+            curr_sum=Math.max(nums[i]+curr_sum,nums[i]);
+        }
+         else
+         {
+             curr_sum=nums[i];
+         }
+            max_sum=Math.max(curr_sum,max_sum);
+        }
+        
+        return max_sum;
+    }
+}
