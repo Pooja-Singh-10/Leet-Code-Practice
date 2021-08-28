@@ -1,0 +1,30 @@
+/*Here we'll take an array (count) which will loop over the array trust. 
+Arraty count will keep a track of how many people each person trusts (decrementing the count)  and how many people each person doesn't trust (Incrementing the count). Hence, a person whose count value is n-1 is the one amongst the n people who did not trust any one and was trusted by every one.*/
+
+class Solution {
+    public int findJudge(int n, int[][] trust) {
+        
+        int[] count = new int[n+1];
+        
+        for(int[] t: trust)
+        {
+          count[t[0]]--;/*1st person's count would be decremented( cause it trusts others)*/
+           // System.out.println(count[t[0]]);
+          count[t[1]]++;/*2nd person's count would be decremented( cause it is trusted by others)*/
+            // System.out.println(count[t[1]]);
+            
+        }
+        
+    
+    for(int i=1;i<=n;i++)
+    {
+        
+        if(count[i]==n-1)
+        {
+            return i;
+        }
+    }
+        return -1;
+        
+    }
+}
