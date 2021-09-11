@@ -1,0 +1,33 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+/*Since it is a binary tree, so the left side values would be obviously lesser than right side values. 
+Hence we are comparing the value of root with both p and q and according deciding whether to traverse
+(caling the same function recursively) on left or right side and returning root */
+
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        
+   
+        if(p.val < root.val && q.val < root.val)
+        {
+          return lowestCommonAncestor(root.left,p,q);  
+        }
+        
+        if(p.val > root.val && q.val > root.val)
+        {
+          return lowestCommonAncestor(root.right,p,q);  
+        }
+        
+        
+        return root;
+        
+    }
+}
