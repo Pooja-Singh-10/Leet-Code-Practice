@@ -8,7 +8,7 @@
  * }
  */
 
-/*Since it is a binary tree, so the left side values would be obviously lesser than right side values. 
+/*Since it is a binary search tree(BST), so the left side values would be obviously lesser than right side values. 
 Hence we are comparing the value of root with both p and q and according deciding whether to traverse
 (caling the same function recursively) on left or right side and returning root */
 
