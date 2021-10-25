@@ -1,0 +1,38 @@
+public class GFG {
+
+	// Method to convert the string
+	static String capitailizeWord(String str) {
+      
+      StringBuilder res = new StringBuilder();
+      res.append(Character.toUpperCase(str.charAt(0)));
+       
+      int index=1;
+      while(index<str.length())
+      {
+       
+        if(str.charAt(index)==' ')
+{
+res.append(Character.toUpperCase(str.charAt(index+1)));
+          index+=1;
+}
+        else
+        {
+         res.append(str.charAt(index)); 
+        }
+        index+=1;
+      }
+      return res.toString();
+      
+    }
+	public static void main(String args[]) {
+
+		// Declare the string
+		String s1 = "gEEks fOr GeeKs";
+
+		// Convert that string into lowercase
+		s1 = s1.toLowerCase();
+
+		// Call the method to capitalize each word
+		System.out.println(capitailizeWord(s1));
+	}
+}
