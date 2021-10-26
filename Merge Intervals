@@ -1,0 +1,34 @@
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        
+        if(intervals.length<=1)
+        {
+            return intervals;
+        }
+        Arrays.sort(intervals, (arr1,arr2)->Integer.compare(arr1[0],arr2[0]));
+        List<int[]> outputArr = new ArrayList<>();
+        int[] currElement = intervals[0];
+        outputArr.add(currElement);
+        
+        for(int[] i : intervals)
+        {
+            int currBegin=currElement[0];
+            int currEnd=currElement[1];
+            int nextBegin=i[0];
+            int nextEnd=i[1];
+            
+            if(currEnd>=nextBegin)
+            {
+                currElement[1]= Math.max(currEnd,nextEnd);
+            }
+            else
+            {
+                currElement=i;
+                outputArr.add(currElement);
+                
+            }
+        }
+        
+        return outputArr.toArray(new int[outputArr.size()][]);
+    }
+}
