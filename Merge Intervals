@@ -1,3 +1,16 @@
+ /*
+    
+    Algorithm
+    1. Take an arrayList outputArr (it would be later converted to array)
+    2. Sort the array and compare it.
+    3. Store the first element of the variable in an array(say currElement)
+    and store it in outputArr
+    4. Traverse through intervals array and check whether the value at 1st position of 1st element is greater than the value at 0th position of second element.
+    5. if so, update the 1st position of the element in outputArr with the max value.
+    6. if not, asign the next element of the intervals array to the current element and assign current element to outpurArr
+    
+    */
+
 class Solution {
     public int[][] merge(int[][] intervals) {
         
