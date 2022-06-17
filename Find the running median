@@ -1,0 +1,46 @@
+class Result {
+
+    /*
+     * Complete the 'runningMedian' function below.
+     *
+     * The function is expected to return a DOUBLE_ARRAY.
+     * The function accepts INTEGER_ARRAY a as parameter.
+     */
+
+    public static List<Double> runningMedian(List<Integer> a) {
+    // Write your code here
+      PriorityQueue<Integer> maxHeap= new PriorityQueue<>(Collections.reverseOrder()); // When creating maxHeap inside PriorityQueue , we write Collections.reverseOrder 
+   PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+   List<Double> result = new ArrayList<>();
+   
+   for(int num: a)
+   {
+       if(maxHeap.isEmpty() || maxHeap.peek()>=num)
+       {
+           maxHeap.add(num);
+       }
+       else 
+       minHeap.add(num);
+       if(maxHeap.size()>minHeap.size()+1)
+       {
+           minHeap.add(maxHeap.poll());
+       }
+       else if (maxHeap.size()<minHeap.size())
+       {
+          maxHeap.add(minHeap.poll()); 
+       } 
+       
+         if(maxHeap.size()== minHeap.size()){
+            double m= maxHeap.peek() / 2.0 + minHeap.peek() / 2.0;
+            //System.out.println("m= "+m);
+            result.add(m);
+        }else{
+        double k = maxHeap.peek();
+       // System.out.println("k= "+k);
+        result.add(k);}
+   }
+   
+   return result;
+    }
+
+}
