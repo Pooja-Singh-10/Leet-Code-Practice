@@ -1,0 +1,87 @@
+class TNode{
+    int wc;
+    boolean terminal; 
+    TNode[] children = new TNode[26];
+    
+    void add(char c, TNode n)
+    {
+        children[c-'a']=n;
+    }
+    
+    TNode next(char c)
+    {
+        return children[c-'a'];
+    }
+}
+   
+      
+      
+      
+  
+
+class Result {
+
+    /*
+     * Complete the 'contacts' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts 2D_STRING_ARRAY queries as parameter.
+     */
+     
+      static void insert(String key, TNode root)
+    {
+        for(char c:key.toCharArray())
+        {
+            if(root.next(c)==null)
+            {
+               root.add(c, new TNode()); 
+            }
+            root=root.next(c);
+            root.wc+=1;
+            
+        }
+        root.terminal=true;
+    }
+    
+    static TNode find(String key, TNode root)
+    {
+       for(char c:key.toCharArray())
+       {
+        if(root.next(c)==null)
+        {
+            return null;
+        }
+        root=root.next(c);
+       }
+       return root;
+    }
+     
+     public static List<Integer> contacts(List<List<String>> queries) {
+        final TNode root = new TNode();
+        List<Integer> result = new ArrayList<>();
+        
+        queries.forEach(q->{
+            if(q.get(0).equals("add"))
+            {
+                insert(q.get(1), root);
+            }
+            
+            if(q.get(0).equals("find"))
+            {
+                TNode node= find(q.get(1), root);
+                if(node==null)
+                {
+                    result.add(0);
+                }
+             else
+                    result.add(node.wc);
+                
+            }
+            
+        });
+        return result;
+        }
+            
+        
+       
+    }
