@@ -1,0 +1,57 @@
+/* So, if you do inorder traversal of BST, it returns a sorted array. This is what we are gonna do here.
+ We will do inorder traversal and tehn we will check if the resultant array of value is sorted or not. If it is sorted, means that it is a BST otherwise it's not.*/
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+      
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> st = new Stack<>();
+        TreeNode cur= root;
+        if(root == null)
+        {
+            return true;
+        }
+        
+        while(!st.isEmpty() || cur!=null)
+        {
+            while(cur!=null)
+            {
+                st.push(cur);
+                cur=cur.left;
+            }
+            
+            cur=st.pop();
+            result.add(cur.val);
+            cur=cur.right;
+        }
+        System.out.println(result);
+        /* Now, we are ready with teh result array which would have sorted values if the input tree is BST.
+        So, now we will check if result array is sorted or not.
+        */
+        
+        for(int i=1;i<result.size();i++)
+        {
+            if(result.get(i)<=result.get(i-1))
+               {
+                   return false;
+               }
+        }
+        
+return true;
+    }
+}
