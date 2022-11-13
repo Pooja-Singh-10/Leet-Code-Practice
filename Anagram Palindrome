@@ -1,0 +1,29 @@
+/*
+Given a string S, Check if characters of the given string can be rearranged to form a palindrome
+*/
+
+class Sol
+{
+    boolean isPossible (String S)
+    {
+        List<Character> list = new ArrayList<>();
+        
+        for(int i=0; i<S.length; i++)
+        {
+            if(list.contains(S.charAt(i)))
+            {
+                list.remove(S.charAt(i));
+            }
+            else
+            {
+                list.add(charAt(i));
+            }
+        }
+        
+        if(S.length() % 2 ==0 && list.isEmpty()||S.length() % 2 == 1 && list.size==1)
+        return true;
+        
+        
+    }
+    return false;
+}
