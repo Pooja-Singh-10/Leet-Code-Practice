@@ -16,7 +16,7 @@ class Sol
             }
             else
             {
-                list.add(charAt(i));
+                list.add(S.charAt(i));
             }
         }
         
