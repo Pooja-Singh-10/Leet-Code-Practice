@@ -1,0 +1,26 @@
+
+/*Remove duplicates frmo sorted array without using extra memory (modify the same array) and return the count of the distinct elements of the array*/
+
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        
+        int j=1;
+        for(int i=0; i<nums.length-1; i++)
+        {
+            if(nums[i]!=nums[i+1])
+            {
+                nums[j]=nums[i+1];
+                j++;
+            }
+        }
+        int [] result = new int[j]; // If you want to display the array of distinct elements
+        for(int i=0;i<j;i++)
+        {
+            //System.out.print(nums[i]);
+            result[i]=nums[i];
+        }
+        System.out.println(Arrays.toString(result));
+        return j; // j is the count of distinct elements
+    }
+}
