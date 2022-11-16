@@ -1,0 +1,45 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.Arrays;
+
+class GFG {
+    
+    
+    public static int findPlatform(int arr[], int dep[],
+                                   int n)
+    {
+ 
+       Arrays.sort(arr);
+       Arrays.sort(dep);
+       // We will have two counter variables for arrival and departure 
+       int i=0;
+       int j=0;
+       int count =0;
+       int max=0;// Maximum overlap meaning minimum platforms
+       // Now we will iterarte over arrival and departure times arrays
+       while(i<n)
+       {
+           // first we have to find whether it is arrival time or departure time
+           if(arr[i]<=dep[j]) // it is arrival time
+           {
+               count++;
+               max=Math.max(count, max);
+               i++;
+           }
+           else if(arr[i]>dep[j])
+           {
+               count --;
+               j++;
+           }
+       }
+       return max;
+    }
+	 public static void main(String[] args)
+    {
+        int arr[] = { 100, 300, 500 };
+        int dep[] = { 900, 400, 600 };
+        int n = 3;
+        System.out.println(findPlatform(arr, dep, n));
+    }
+}
