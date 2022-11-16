@@ -1,7 +1,7 @@
  /*
     
     Algorithm
-    1. Take an arrayList outputArr (it would be later converted to array)
+    1. Take a list of arrays "outputArr" (it would be later converted to array)
     2. Sort the array and compare it.
     3. Store the first element of the variable in an array(say currElement)
     and store it in outputArr
@@ -18,7 +18,7 @@ class Solution {
         {
             return intervals;
         }
-        Arrays.sort(intervals, (arr1,arr2)->Integer.compare(arr1[0],arr2[0]));
+        Arrays.sort(intervals, (arr1,arr2)->Integer.compare(arr1[0],arr2[0])); // We are looping through current array(arr1) and next array(arr2) of intervals and we will sort based in the first element of both the arrays. Basically, 1st element of the first array must be lesser that the first element of second array.
         List<int[]> outputArr = new ArrayList<>();
         int[] currElement = intervals[0];
         outputArr.add(currElement);
