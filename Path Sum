@@ -20,6 +20,7 @@ public boolean hasPathSum(TreeNode root, int sum) {
         {
             return false;
         }
+	       // As we traverse through the tree, we are gonna subtarct teh value of every node from the sum. So, in the end, if the leaf node becomes same as sum, it means the tree has the path sum
         if((root.val==sum) && (root.left==null && root.right==null))
            {
               return true; 
